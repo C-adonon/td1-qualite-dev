@@ -63,4 +63,15 @@ public class VoitureTest {
         Assert.isTrue(voiture.getId() == 5, "Doit être 5");
     }
 
+    @Test
+    void modifierVoiture() {
+        Voiture voiture = new Voiture("BMW", 40000);
+        Assert.isTrue(voiture.getMarque().equals("BMW"), "Doit être BMW");
+        Assert.isTrue(voiture.getPrix() == 40000, "Prix doit être 40000");
+        voiture.setMarque("Audi");
+        voiture.setPrix(45000);
+        Assert.isTrue(voiture.getMarque().equals("Audi"), "Doit être Audi");
+        Assert.isTrue(voiture.getPrix() == 45000, "Prix doit être 45000");
+    }
+
 }
