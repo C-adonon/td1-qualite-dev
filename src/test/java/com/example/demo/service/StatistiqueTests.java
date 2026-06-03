@@ -19,4 +19,12 @@ public class StatistiqueTests {
         doNothing().when(statistiqueImpl).ajouter(new Voiture("Ferrari", 5000));
         when(statistiqueImpl.prixMoyen()).thenReturn(new Echantillon(1, 5000));
     }
+
+    @Test
+    void statistique2Voitures(){
+        doNothing().when(statistiqueImpl).ajouter(new Voiture("Ferrari", 5000));
+        doNothing().when(statistiqueImpl).ajouter(new Voiture("Porsche", 3000));
+        when(statistiqueImpl.prixMoyen()).thenReturn(new Echantillon(2, 4000));
+    }
+    
 }
