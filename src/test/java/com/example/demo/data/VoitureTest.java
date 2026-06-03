@@ -42,6 +42,13 @@ public class VoitureTest {
     }
 
     @Test
+    void setPrix() {
+        Voiture voiture = new Voiture();
+        voiture.setPrix(50000);
+        Assert.isTrue(voiture.getPrix() == 50000, "Prix doit être 50000");
+    }
+
+    @Test
     void toStringVoiture() {
         Voiture voiture = new Voiture("Renault", 15000);
         voiture.setId(1);
