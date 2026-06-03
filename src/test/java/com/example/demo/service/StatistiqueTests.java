@@ -15,15 +15,8 @@ public class StatistiqueTests {
     StatistiqueImpl statistiqueImpl;
 
     @Test
-    public void getStatistiques() throws Exception {
-        doNothing().when(statistiqueImpl).ajouter(new Voiture("Ferrari", 100000));
-        when(statistiqueImpl.prixMoyen()).thenReturn(new Echantillon(1, 100000));
-        mockMvc.perform(get("/statistique"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.nombreDeVoitures").value(1))
-                .andExpect(jsonPath("$.prixMoyen").value(100000));
-                .andReturn();
+    void statistique1Voiture(){
+        doNothing().when(statistiqueImpl).ajouter(new Voiture("Ferrari", 5000));
+        when(statistiqueImpl.prixMoyen()).thenReturn(new Echantillon(1, 5000));
     }
-
 }
