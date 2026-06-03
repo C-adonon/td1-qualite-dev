@@ -7,6 +7,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import static org.mockito.Mockito.*;
 import java.util.SecureRandom;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 public class StatistiqueTests {
