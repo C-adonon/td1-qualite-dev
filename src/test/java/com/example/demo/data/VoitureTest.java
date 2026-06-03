@@ -22,7 +22,30 @@ public class VoitureTest {
         Voiture voiture = new Voiture("Fiat", 7000);
         Assert.isTrue(voiture.getMarque().equals("Fiat"), "Doit être une Fiat");
         Assert.isTrue(voiture.getPrix() == 7000, "Prix doit être 7000");
-        Assert.isTrue(voiture.getId() == 2, "Doit être 2");
+        Assert.isTrue(voiture.setId(2), "Doit être 2");
+    }
+
+    @Test
+    void creerVoitureSansParams() {
+        Voiture voiture = new Voiture();
+        Assert.isTrue(voiture.getMarque() == null, "Doit être null");
+        Assert.isTrue(voiture.getPrix() == 0, "Prix doit être 0");
+        Assert.isTrue(voiture.getId() == 0, "Doit être 0");
+    }
+
+    @Test
+    void setMarque() {
+        Voiture voiture = new Voiture();
+        voiture.setMarque("Tesla");
+        Assert.isTrue(voiture.getMarque().equals("Tesla"), "Doit être Tesla");
+    }
+
+    @Test
+    void toStringVoiture() {
+        Voiture voiture = new Voiture("Renault", 15000);
+        voiture.setId(1);
+        String expected = "Car{marque='Renault', prix=15000, id=1}";
+        assertEquals(expected, voiture.toString(), "Affiche les infos de la voiture de la bonne forme");
     }
 
 }
