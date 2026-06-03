@@ -10,8 +10,68 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class VoitureTest {
 
     @Test
-    void creerVoiture(){
-        assertEquals(1,1);
+    void creerVoiture() {
+        Voiture voiture = new Voiture("Porsche", 70000);
+        Assert.isTrue(voiture.getMarque().equals("Porsche"), "Doit être Porsche");
+        Assert.isTrue(voiture.getPrix() == 70000, "Prix doit être 70000");
+        Assert.isTrue(voiture.getId() == 0, "Doit être 0");
+    }
+
+    @Test
+    void creerVoitureAvecId() {
+        Voiture voiture = new Voiture("Fiat", 7000);
+        Assert.isTrue(voiture.getMarque().equals("Fiat"), "Doit être une Fiat");
+        Assert.isTrue(voiture.getPrix() == 7000, "Prix doit être 7000");
+        voiture.setId(2);
+        Assert.isTrue(voiture.getId() == 2, "Doit être 2");
+    }
+
+    @Test
+    void creerVoitureSansParams() {
+        Voiture voiture = new Voiture();
+        Assert.isTrue(voiture.getMarque() == null, "Doit être null");
+        Assert.isTrue(voiture.getPrix() == 0, "Prix doit être 0");
+        Assert.isTrue(voiture.getId() == 0, "Doit être 0");
+    }
+
+    @Test
+    void setMarque() {
+        Voiture voiture = new Voiture();
+        voiture.setMarque("Tesla");
+        Assert.isTrue(voiture.getMarque().equals("Tesla"), "Doit être Tesla");
+    }
+
+    @Test
+    void setPrix() {
+        Voiture voiture = new Voiture();
+        voiture.setPrix(50000);
+        Assert.isTrue(voiture.getPrix() == 50000, "Prix doit être 50000");
+    }
+
+    @Test
+    void toStringVoiture() {
+        Voiture voiture = new Voiture("Renault", 15000);
+        voiture.setId(1);
+        String expected = "Car{marque='Renault', prix=15000, id=1}";
+        assertEquals(expected, voiture.toString(), "Affiche les infos de la voiture de la bonne forme");
+    }
+
+    @Test
+    void setId() {
+        Voiture voiture = new Voiture();
+        voiture.setId(5);
+        Assert.isTrue(voiture.getId() == 5, "Doit être 5");
+    }
+
+    @Test
+    void modifierVoiture() {
+        Voiture voiture = new Voiture("BMW", 40000);
+        Assert.isTrue(voiture.getMarque().equals("BMW"), "Doit être BMW");
+        Assert.isTrue(voiture.getPrix() == 40000, "Prix doit être 40000");
+        voiture.setMarque("Audi");
+        voiture.setPrix(45000);
+        Assert.isTrue(voiture.getMarque().equals("Audi"), "Doit être Audi");
+        Assert.isTrue(voiture.getPrix() == 45000, "Prix doit être 45000");
     }
 
 }
