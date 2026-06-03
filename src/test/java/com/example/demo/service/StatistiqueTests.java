@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import static org.mockito.Mockito.*;
-import Math.*;
+import java.util.SecureRandom;
 
 @SpringBootTest
 public class StatistiqueTests {
@@ -39,6 +39,20 @@ public class StatistiqueTests {
             doNothing().when(statistiqueImpl).ajouter(new Voiture("Ferrari", 5000));
         }
         when(statistiqueImpl.prixMoyen()).thenReturn(new Echantillon(nbrVoiture, 5000));
+    }
+
+    @Test
+    public void testPrrixMoyen() {
+        StatistiqueImpl statistique = new StatistiqueImpl();
+
+        Voiture voiture1 = new Voiture("Toyota", 5000);
+        statistique.ajouter(voiture1);
+
+        Voiture voiture2 = new Voiture("Honda",  7000);
+        statistique.ajouter(voiture2);
+
+        Echantillon echantillon = statistique.prixMoyen();
+        assertEquals(6000, echantillon.getPrixMoyen());
     }
 
 }
