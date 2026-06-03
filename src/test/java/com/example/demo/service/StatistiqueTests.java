@@ -26,5 +26,10 @@ public class StatistiqueTests {
         doNothing().when(statistiqueImpl).ajouter(new Voiture("Porsche", 3000));
         when(statistiqueImpl.prixMoyen()).thenReturn(new Echantillon(2, 4000));
     }
-    
+
+    @Test
+    void statistique0Voiture(){
+        when(statistiqueImpl.prixMoyen()).thenThrow(new ArithmeticException());
+    }
+
 }
