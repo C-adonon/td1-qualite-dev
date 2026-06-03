@@ -26,13 +26,13 @@ public class VoitureTest {
         Assert.isTrue(voiture.getId() == 2, "Doit être 2");
     }
 
-    // @Test
-    // void creerVoitureSansParams() {
-    //     Voiture voiture = new Voiture();
-    //     Assert.isTrue(voiture.getMarque() == null, "Doit être null");
-    //     Assert.isTrue(voiture.getPrix() == 0, "Prix doit être 0");
-    //     Assert.isTrue(voiture.getId() == 0, "Doit être 0");
-    // }
+    @Test
+    void creerVoitureSansParams() {
+        Voiture voiture = new Voiture();
+        Assert.isTrue(voiture.getMarque() == null, "Doit être null");
+        Assert.isTrue(voiture.getPrix() == 0, "Prix doit être 0");
+        Assert.isTrue(voiture.getId() == 0, "Doit être 0");
+    }
 
     // @Test
     // void setMarque() {
