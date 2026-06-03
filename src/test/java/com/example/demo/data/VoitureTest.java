@@ -41,12 +41,12 @@ public class VoitureTest {
         Assert.isTrue(voiture.getMarque().equals("Tesla"), "Doit être Tesla");
     }
 
-    // @Test
-    // void toStringVoiture() {
-    //     Voiture voiture = new Voiture("Renault", 15000);
-    //     voiture.setId(1);
-    //     String expected = "Car{marque='Renault', prix=15000, id=1}";
-    //     assertEquals(expected, voiture.toString(), "Affiche les infos de la voiture de la bonne forme");
-    // }
+    @Test
+    void toStringVoiture() {
+        Voiture voiture = new Voiture("Renault", 15000);
+        voiture.setId(1);
+        String expected = "Car{marque='Renault', prix=15000, id=1}";
+        assertEquals(expected, voiture.toString(), "Affiche les infos de la voiture de la bonne forme");
+    }
 
 }
