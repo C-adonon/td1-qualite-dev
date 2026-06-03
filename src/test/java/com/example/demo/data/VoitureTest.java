@@ -34,12 +34,12 @@ public class VoitureTest {
         Assert.isTrue(voiture.getId() == 0, "Doit être 0");
     }
 
-    // @Test
-    // void setMarque() {
-    //     Voiture voiture = new Voiture();
-    //     voiture.setMarque("Tesla");
-    //     Assert.isTrue(voiture.getMarque().equals("Tesla"), "Doit être Tesla");
-    // }
+    @Test
+    void setMarque() {
+        Voiture voiture = new Voiture();
+        voiture.setMarque("Tesla");
+        Assert.isTrue(voiture.getMarque().equals("Tesla"), "Doit être Tesla");
+    }
 
     // @Test
     // void toStringVoiture() {
