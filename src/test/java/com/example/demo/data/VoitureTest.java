@@ -56,4 +56,11 @@ public class VoitureTest {
         assertEquals(expected, voiture.toString(), "Affiche les infos de la voiture de la bonne forme");
     }
 
+    @Test
+    void setId() {
+        Voiture voiture = new Voiture();
+        voiture.setId(5);
+        Assert.isTrue(voiture.getId() == 5, "Doit être 5");
+    }
+
 }
