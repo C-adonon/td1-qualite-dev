@@ -42,7 +42,7 @@ public class StatistiqueTests {
     }
 
     @Test
-    public void testPrrixMoyen() {
+    public void testPrixMoyen() {
         StatistiqueImpl statistique = new StatistiqueImpl();
 
         Voiture voiture1 = new Voiture("Toyota", 5000);
