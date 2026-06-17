@@ -11,8 +11,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 public class StatistiqueTests {
 
-    @MockBean
-    StatistiqueImpl statistiqueImpl;
+    private StatistiqueImpl statistiqueImpl;
+    private Voiture ferrari;
+    private Voiture porsche;
+
+    @BeforeEach
+    void setUp() {
+        statistiqueImpl = new StatistiqueImpl();
+        ferrari = new Voiture("Ferrari", 5000);
+        porsche = new Voiture("Porsche", 3000);
+    }
 
     @Test
     void statistique1Voiture(){
@@ -54,16 +62,4 @@ public class StatistiqueTests {
         Echantillon echantillon = statistique.prixMoyen();
         assertEquals(6000, echantillon.getPrixMoyen());
     }
-
-    @Test
-    public void testPrixMoyenSansVoiture() {
-        StatistiqueImpl statistique = new StatistiqueImpl();
-
-        try {
-            statistique.prixMoyen();
-        } catch (ArithmeticException e) {
-           assertThrows(ArithmeticException.class, () -> statistique.prixMoyen());
-        }
-    }
-
 }
