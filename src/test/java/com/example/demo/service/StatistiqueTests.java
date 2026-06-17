@@ -8,6 +8,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 public class StatistiqueTests {
@@ -27,7 +28,7 @@ public class StatistiqueTests {
     void statistique1Voiture(){
         statistiqueImpl.ajouter(ferrari);
         Echantillon echantillon = statistiqueImpl.prixMoyen();
-        assertEquals(1, echantillon.getNombre());
+        assertEquals(1, echantillon.getNombreDeVoitures());
         assertEquals(5000, echantillon.getPrixMoyen());
     }
 
@@ -36,7 +37,7 @@ public class StatistiqueTests {
         statistiqueImpl.ajouter(ferrari);
         statistiqueImpl.ajouter(porsche);
         Echantillon echantillon = statistiqueImpl.prixMoyen();
-        assertEquals(2, echantillon.getNombre());
+        assertEquals(2, echantillon.getNombreDeVoitures());
         assertEquals(4000, echantillon.getPrixMoyen());
     }
 
@@ -54,7 +55,7 @@ public class StatistiqueTests {
             statistiqueImpl.ajouter(ferrari);
         }
         Echantillon echantillon = statistiqueImpl.prixMoyen();
-        assertEquals(nbrVoiture, echantillon.getNombre());
+        assertEquals(nbrVoiture, echantillon.getNombreDeVoitures());
         assertEquals(5000, echantillon.getPrixMoyen());
     }
 
