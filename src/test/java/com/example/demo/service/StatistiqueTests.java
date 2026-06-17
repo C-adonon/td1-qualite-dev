@@ -25,42 +25,45 @@ public class StatistiqueTests {
 
     @Test
     void statistique1Voiture(){
-        doNothing().when(statistiqueImpl).ajouter(new Voiture("Ferrari", 5000));
-        when(statistiqueImpl.prixMoyen()).thenReturn(new Echantillon(1, 5000));
+        statistiqueImpl.ajouter(ferrari);
+        Echantillon echantillon = statistiqueImpl.prixMoyen();
+        assertEquals(1, echantillon.getNombre());
+        assertEquals(5000, echantillon.getPrixMoyen());
     }
 
     @Test
     void statistique2Voitures(){
-        doNothing().when(statistiqueImpl).ajouter(new Voiture("Ferrari", 5000));
-        doNothing().when(statistiqueImpl).ajouter(new Voiture("Porsche", 3000));
-        when(statistiqueImpl.prixMoyen()).thenReturn(new Echantillon(2, 4000));
+        statistiqueImpl.ajouter(ferrari);
+        statistiqueImpl.ajouter(porsche);
+        Echantillon echantillon = statistiqueImpl.prixMoyen();
+        assertEquals(2, echantillon.getNombre());
+        assertEquals(4000, echantillon.getPrixMoyen());
     }
 
     @Test
     void statistique0Voiture(){
-        when(statistiqueImpl.prixMoyen()).thenThrow(new ArithmeticException());
+        assertThrows(ArithmeticException.class, () -> {
+            statistiqueImpl.prixMoyen();
+        });
     }
 
     @Test
     void rdmNbrVoitures(){
         int nbrVoiture = (int)(Math.random() * 21);
         for(int i = 0; i < nbrVoiture; i++){
-            doNothing().when(statistiqueImpl).ajouter(new Voiture("Ferrari", 5000));
+            statistiqueImpl.ajouter(ferrari);
         }
-        when(statistiqueImpl.prixMoyen()).thenReturn(new Echantillon(nbrVoiture, 5000));
+        Echantillon echantillon = statistiqueImpl.prixMoyen();
+        assertEquals(nbrVoiture, echantillon.getNombre());
+        assertEquals(5000, echantillon.getPrixMoyen());
     }
 
     @Test
     public void testPrixMoyen() {
-        StatistiqueImpl statistique = new StatistiqueImpl();
+        statistiqueImpl.ajouter(ferrari);
+        statistiqueImpl.ajouter(porsche);
 
-        Voiture voiture1 = new Voiture("Toyota", 5000);
-        statistique.ajouter(voiture1);
-
-        Voiture voiture2 = new Voiture("Honda",  7000);
-        statistique.ajouter(voiture2);
-
-        Echantillon echantillon = statistique.prixMoyen();
-        assertEquals(6000, echantillon.getPrixMoyen());
+        Echantillon echantillon = statistiqueImpl.prixMoyen();
+        assertEquals(4000, echantillon.getPrixMoyen());
     }
 }
